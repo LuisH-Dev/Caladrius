@@ -40,6 +40,29 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Cadastro') }}</label>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="usuario" value="usuario" {{ old('user_type') == 'usuario' ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="usuario">
+                                        usuario
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="vendedor" value="vendedor" {{ old('user_type') == 'vendedor' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="vendedor">
+                                        vendedor
+                                    </label>
+                                </div>
+                                @error('user_type')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

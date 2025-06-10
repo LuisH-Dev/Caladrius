@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('atores', function (Blueprint $table) {
+        Schema::create('livros', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome', 100);
-            $table->string('nacionalidade', 50);
-            $table->date('data_nascimento');
-            $table->date('inicio_atividades');
+            $table->string('titulo');
+            $table->string('autor');
+            $table->string('editora');
+            $table->year('ano_publicacao');
+            $table->string('genero')->nullable();
+            $table->decimal('preco', 8, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('atores');
+        Schema::dropIfExists('livros');
     }
 };

@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nacionalidades', function (Blueprint $table) {
+        Schema::create('filmes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao', 100);
+            $table->string('titulo');
+            $table->string('diretor');
+            $table->string('produtora');
+            $table->year('ano_lancamento');
+            $table->string('genero')->nullable();
+            $table->decimal('preco', 8, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nacionalidades');
+        Schema::dropIfExists('filmes');
     }
 };
