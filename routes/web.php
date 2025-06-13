@@ -4,6 +4,10 @@ use App\Http\Controllers\NacionalidadesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AtoresController;
+use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\JogoController;
+use App\Http\Controllers\FilmeController;
+use App\Http\Controllers\LivroController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -30,6 +34,23 @@ Route::post('nacionalidades/store', [NacionalidadesController::class, 'store'])-
 Route::get('nacionalidades/{id}/destroy', [NacionalidadesController::class, 'destroy'])->middleware('auth')->name('nacionalidades.destroy');
 Route::get('nacionalidades/{id}/edit', [NacionalidadesController::class, 'edit'])->middleware('auth')->name('nacionalidades.edit');
 Route::put('/nacionalidades/{id}', [NacionalidadesController::class, 'update'])->middleware('auth')->name('nacionalidades.update');
+
+// Produtos routes
+
+Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos.index');
+
+Route::get('/produtos/novo-jogo', [ProdutosController::class, 'createJogo'])->name('jogos.create');
+Route::post('/produtos/novo-jogo', [ProdutosController::class, 'storeJogo'])->name('jogos.store');
+
+Route::get('/produtos/novo-filme', [ProdutosController::class, 'createFilme'])->name('filmes.create');
+Route::post('/produtos/novo-filme', [ProdutosController::class, 'storeFilme'])->name('filmes.store');
+
+Route::get('/produtos/novo-livro', [ProdutosController::class, 'createLivro'])->name('livros.create');
+Route::post('/produtos/novo-livro', [ProdutosController::class, 'storeLivro'])->name('livros.store');
+
+Route::resource('jogos', JogoController::class)->except(['show']);
+Route::resource('filmes', FilmeController::class)->except(['show', 'index', 'create', 'store']);
+Route::resource('livros', LivroController::class)->except(['show', 'index', 'create', 'store']);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

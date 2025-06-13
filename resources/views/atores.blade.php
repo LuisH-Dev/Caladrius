@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Atores</title>
+    <title>Usários</title>
 </head>
 <body>
     <h1>Atores</h1>

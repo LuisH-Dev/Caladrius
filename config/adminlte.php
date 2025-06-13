@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -327,45 +326,29 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'ATORES'],
+        ['header' => 'PRODUTOS'],
         [
-            'text' => 'Listagem',
-            'url' => '/atores',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Listar Produtos',
+            'url' => '/produtos',
+            'icon' => 'fas fa-fw fa-list',
         ],
         [
-            'text' => 'Adicionar',
-            'url' => '/atores/create',
-            'icon' => 'fas fa-fw fa-user-plus',
-        ],
-        ['header' => 'NACIONALIDADES'],
-        [
-            'text' => 'Listagem',
-            'url' => '/nacionalidades',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Adicionar Jogo',
+            'url' => '/produtos/novo-jogo',
+            'icon' => 'fas fa-fw fa-gamepad',
         ],
         [
-            'text' => 'Adicionar',
-            'url' => '/nacionalidades/create',
-            'icon' => 'fas fa-fw fa-user-plus',
-        ],
-        ['header' => 'Configurações'],
-        [
-            'text' => 'Usuários',
-            'url' => '/usuarios',
-            'icon' => 'fas fa-fw fa-users',
+            'text' => 'Adicionar Filme',
+            'url' => '/produtos/novo-filme',
+            'icon' => 'fas fa-fw fa-film',
         ],
         [
-            'text' => 'Perfis',
-            'url' => '/perfis',
-            'icon' => 'fas fa-fw fa-user-tag',
-        ],
-        [
-            'text' => 'Sair',
-            'url' => '/logout',
-            'icon' => 'fas fa-fw fa-sign-out-alt',
+            'text' => 'Adicionar Livro',
+            'url' => '/produtos/novo-livro',
+            'icon' => 'fas fa-fw fa-book',
         ],
 
+        // ...outros itens, como configurações, usuários, etc...
     ],
 
     /*
