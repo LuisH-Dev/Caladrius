@@ -39,27 +39,19 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Cadastro') }}</label>
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="user_type" id="usuario" value="usuario" {{ old('user_type') == 'usuario' ? 'checked' : '' }} required>
-                                    <label class="form-check-label" for="usuario">
-                                        usuario
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="user_type" id="vendedor" value="vendedor" {{ old('user_type') == 'vendedor' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="vendedor">
-                                        vendedor
-                                    </label>
-                                </div>
-                                @error('user_type')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Cadastro</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="user_type" id="usuario" value="usuario" required>
+                                <label class="form-check-label" for="usuario">Usuário</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="user_type" id="vendedor" value="vendedor" required>
+                                <label class="form-check-label" for="vendedor">Vendedor</label>
+                            </div>
+                            @error('user_type')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="row mb-3">

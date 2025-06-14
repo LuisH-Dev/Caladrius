@@ -18,9 +18,9 @@ class JogoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function view()
     {
-        //
+        return view('produtos.create_jogo');
     }
 
     /**
@@ -28,7 +28,17 @@ class JogoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'desenvolvedor' => 'required|string|max:255',
+            'publicadora' => 'required|string|max:255',
+            'ano_lancamento' => 'required|integer',
+            'genero' => 'required|string|max:255',
+            'preco' => 'required|numeric',
+        ]);
+
+        Jogo::create($request->all());
+        return redirect('/produtos')->with('success', 'Jogo adicionado com sucesso!');
     }
 
     /**

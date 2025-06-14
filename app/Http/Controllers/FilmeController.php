@@ -18,9 +18,9 @@ class FilmeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function view()
     {
-        //
+        return view('produtos.create_filme');
     }
 
     /**
@@ -28,7 +28,18 @@ class FilmeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'diretor' => 'required|string|max:255',
+            'produtora' => 'required|string|max:255',
+            'ano_lancamento' => 'required|integer',
+            'genero' => 'required|string|max:255',
+            'preco' => 'required|numeric',
+        ]);
+
+        \App\Models\Filme::create($request->all());
+        return redirect()->route('produtos.index')->with('success', 'Filme adicionado com sucesso!');
     }
 
     /**

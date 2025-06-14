@@ -52,23 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                // Validação dinâmica para garantir email único na tabela correta
-                function ($attribute, $value, $fail) use ($data) {
-                    if (isset($data['user_type'])) {
-                        if ($data['user_type'] === 'usuario' && \App\Models\Usuario::where('email', $value)->exists()) {
-                            $fail('O email já está em uso para um usuário.');
-                        }
-                        if ($data['user_type'] === 'vendedor' && \App\Models\Vendedor::where('email', $value)->exists()) {
-                            $fail('O email já está em uso para um vendedor.');
-                        }
-                    }
-                }
-            ],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'user_type' => ['required', 'in:usuario,vendedor'],
         ]);
@@ -82,18 +66,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['user_type'] === 'usuario') {
-            return Usuario::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-        } else {
-            return Vendedor::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-        }
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 }

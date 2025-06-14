@@ -18,9 +18,9 @@ class LivroController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function view()
     {
-        //
+        return view('produtos.create_livro');
     }
 
     /**
@@ -28,7 +28,17 @@ class LivroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'editora' => 'required|string|max:255',
+            'ano_publicacao' => 'required|integer',
+            'genero' => 'required|string|max:255',
+            'preco' => 'required|numeric',
+        ]);
+
+        Livro::create($request->all());
+        return redirect('/produtos')->with('success', 'Livro adicionado com sucesso!');
     }
 
     /**

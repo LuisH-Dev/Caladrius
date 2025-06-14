@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'LaraFlix',
+    'title' => 'Caladrius',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -62,12 +62,12 @@ return [
     |
     */
 
-    'logo' => '<b>Lara</b>Flix',
+    'logo' => '<b>Cala</b>drius',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'LaraFlix',
+    'logo_img_alt' => 'Caladrius',
 
     /*
     |--------------------------------------------------------------------------
@@ -319,12 +319,27 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+        ['header' => 'USUÁRIOS'],
+                [
+            'text' => 'Listar usuários',
+            'url' => '/usuarios',
+            'icon' => 'fas fa-fw fa-users',
+        ],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text' => 'Adicionar usuários',
+            'url' => '/usuarios/novo-usuario',
+            'icon' => 'fas fa-fw fa-user-plus',
+        ],
+        ['header' => 'VENDEDORES'],
+        [
+            'text' => 'Listar Vendedores',
+            'url' => '/vendedores',
+            'icon' => 'fas fa-fw fa-user-tie',
+        ],
+        [
+            'text' => 'Adicionar vendedores',
+            'url' => '/vendedores/novo-vendedor',
+            'icon' => 'fas fa-fw fa-user-plus',
         ],
         ['header' => 'PRODUTOS'],
         [
