@@ -27,17 +27,22 @@ class Pedido extends Model
         return $this->belongsTo(Vendedor::class, 'id_vendedor');
     }
 
-    public function jogo()
+    public function jogos()
     {
-        return $this->belongsTo(Jogo::class, 'id_jogo');
+        return $this->belongsToMany(Jogo::class, 'pedido_jogo')
+                    ->withPivot('quantidade');
     }
-    public function filme()
+    
+    public function filmes()
     {
-        return $this->belongsTo(Filme::class, 'id_vendedor');
+        return $this->belongsToMany(Filme::class, 'pedido_filme')
+                    ->withPivot('quantidade');
+    }
+    
+    public function livros()
+    {
+        return $this->belongsToMany(Livro::class, 'pedido_livro')
+                    ->withPivot('quantidade');
     }
 
-        public function livro()
-    {
-        return $this->belongsTo(Livro::class, 'id_vendedor');
-    }
 }
