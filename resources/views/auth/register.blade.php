@@ -72,7 +72,7 @@
                             <label for="senha-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm senha') }}</label>
 
                             <div class="col-md-6">
-                                <input id="senha-confirm" type="senha" class="form-control" name="senha_confirmation" required autocomplete="new-senha">
+                                <input id="senha-confirm" type="password" class="form-control" name="senha_confirmation" required autocomplete="new-senha">
                             </div>
                         </div>
 
