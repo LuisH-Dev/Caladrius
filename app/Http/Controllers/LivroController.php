@@ -30,10 +30,6 @@ class LivroController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'autor' => 'required|string|max:255',
-            'editora' => 'required|string|max:255',
-            'ano_publicacao' => 'required|integer',
-            'genero' => 'required|string|max:255',
             'preco' => 'required|numeric',
         ]);
 
@@ -65,10 +61,6 @@ class LivroController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'autor' => 'required|string|max:255',
-            'editora' => 'required|string|max:255',
-            'ano_publicacao' => 'required|integer',
-            'genero' => 'required|string|max:255',
             'preco' => 'required|numeric',
         ]);
 

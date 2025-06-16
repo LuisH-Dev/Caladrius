@@ -352,6 +352,12 @@ return [
             'url' => '/produtos/novo-livro',
             'icon' => 'fas fa-fw fa-book',
         ],
+        ['header' => 'PEDIDOS'],
+        [
+            'text' => 'Listar Pedidos',
+            'url' => '/pedidos',
+            'icon' => 'fas fa-fw fa-list',
+        ],
 
         // ...outros itens, como configurações, usuários, etc...
     ],

@@ -31,10 +31,6 @@ class FilmeController extends Controller
         
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'diretor' => 'required|string|max:255',
-            'produtora' => 'required|string|max:255',
-            'ano_lancamento' => 'required|integer',
-            'genero' => 'required|string|max:255',
             'preco' => 'required|numeric',
         ]);
 
@@ -66,10 +62,6 @@ class FilmeController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'diretor' => 'required|string|max:255',
-            'produtora' => 'required|string|max:255',
-            'ano_lancamento' => 'required|integer',
-            'genero' => 'required|string|max:255',
             'preco' => 'required|numeric',
         ]);
 

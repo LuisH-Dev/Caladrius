@@ -9,11 +9,7 @@ class Jogo extends Model
     protected $table = 'jogos';
 
     protected $fillable = [
-        'nome',
-        'desenvolvedor',
-        'publicadora',
-        'ano_lancamento',
-        'genero',
+        'titulo',
         'preco',
     ];
 }

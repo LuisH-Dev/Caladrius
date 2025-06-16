@@ -30,11 +30,7 @@ class JogoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'desenvolvedor' => 'required|string|max:255',
-            'publicadora' => 'required|string|max:255',
-            'ano_lancamento' => 'required|integer',
-            'genero' => 'required|string|max:255',
+            'titulo' => 'required|string|max:255',
             'preco' => 'required|numeric',
         ]);
 

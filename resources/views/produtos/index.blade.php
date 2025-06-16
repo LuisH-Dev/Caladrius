@@ -6,11 +6,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Desenvolvedor</th>
-                <th>Publicadora</th>
-                <th>Ano de Lançamento</th>
-                <th>Gênero</th>
+                <th>Título</th>
                 <th>Preço</th>
                 <th>Ações</th>
             </tr>
@@ -18,11 +14,7 @@
         <tbody>
             @foreach($jogos as $jogo)
             <tr>
-                <td>{{ $jogo->nome }}</td>
-                <td>{{ $jogo->desenvolvedor }}</td>
-                <td>{{ $jogo->publicadora }}</td>
-                <td>{{ $jogo->ano_lancamento }}</td>
-                <td>{{ $jogo->genero }}</td>
+                <td>{{ $jogo->titulo }}</td>
                 <td>R$ {{ number_format($jogo->preco, 2, ',', '.') }}</td>
                 <td>
                     <a href="{{ route('jogos.edit', [$jogo->id]) }}" class="btn-sm btn-success">Editar</a>
@@ -42,10 +34,6 @@
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Diretor</th>
-                <th>Produtora</th>
-                <th>Ano de Lançamento</th>
-                <th>Gênero</th>
                 <th>Preço</th>
                 <th>Ações</th>
             </tr>
@@ -54,10 +42,6 @@
             @foreach($filmes as $filme)
             <tr>
                 <td>{{ $filme->titulo }}</td>
-                <td>{{ $filme->diretor }}</td>
-                <td>{{ $filme->produtora }}</td>
-                <td>{{ $filme->ano_lancamento }}</td>
-                <td>{{ $filme->genero }}</td>
                 <td>R$ {{ number_format($filme->preco, 2, ',', '.') }}</td>
                 <td>
                     <a href="{{ route('filmes.edit', [$filme->id]) }}" class="btn-sm btn-success">Editar</a>
@@ -77,10 +61,6 @@
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Autor</th>
-                <th>Editora</th>
-                <th>Ano de Publicação</th>
-                <th>Gênero</th>
                 <th>Preço</th>
                 <th>Ações</th>
             </tr>
@@ -89,10 +69,6 @@
             @foreach($livros as $livro)
             <tr>
                 <td>{{ $livro->titulo }}</td>
-                <td>{{ $livro->autor }}</td>
-                <td>{{ $livro->editora }}</td>
-                <td>{{ $livro->ano_publicacao }}</td>
-                <td>{{ $livro->genero }}</td>
                 <td>R$ {{ number_format($livro->preco, 2, ',', '.') }}</td>
                 <td>
                     <a href="{{ route('livros.edit', [$livro->id]) }}" class="btn-sm btn-success">Editar</a>

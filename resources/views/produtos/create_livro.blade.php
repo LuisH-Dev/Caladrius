@@ -20,22 +20,6 @@
             <input type="text" name="titulo" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="autor">Autor</label>
-            <input type="text" name="autor" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="editora">Editora</label>
-            <input type="text" name="editora" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="ano_publicacao">Ano de Publicação</label>
-            <input type="number" name="ano_publicacao" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="genero">Gênero</label>
-            <input type="text" name="genero" class="form-control" required>
-        </div>
-        <div class="form-group">
             <label for="preco">Preço</label>
             <input type="number" step="0.01" name="preco" class="form-control" required>
         </div>

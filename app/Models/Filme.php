@@ -10,10 +10,6 @@ class Filme extends Model
 
     protected $fillable = [
         'titulo',
-        'diretor',
-        'produtora',
-        'ano_lancamento',
-        'genero',
         'preco',
     ];
 }
