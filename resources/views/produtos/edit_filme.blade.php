@@ -20,22 +20,6 @@
             {!! Html::text('titulo', 'Título')->value($filme->titulo)->placeholder($filme->titulo)->required()->class('form-control') !!}
         </div>
         <div class="form-group">
-            {!! Html::label('Diretor') !!}
-            {!! Html::text('diretor', 'Diretor')->value($filme->diretor)->placeholder($filme->diretor)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Produtora') !!}
-            {!! Html::text('produtora', 'Produtora')->value($filme->produtora)->placeholder($filme->produtora)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Ano de Lançamento') !!}
-            {!! Html::number('ano_lancamento', 'Ano de Lançamento')->value($filme->ano_lancamento)->placeholder($filme->ano_lancamento)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Gênero') !!}
-            {!! Html::text('genero', 'Gênero')->value($filme->genero)->placeholder($filme->genero)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
             {!! Html::label('Preço') !!}
             {!! Html::number('preco', 'Preço')->value($filme->preco)->placeholder($filme->preco)->attribute('step', '0.01')->required()->class('form-control') !!}
         </div>

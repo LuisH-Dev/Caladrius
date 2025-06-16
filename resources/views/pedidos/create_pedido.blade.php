@@ -1,61 +1,143 @@
 @extends('adminlte::page')
 
 @section('content')
-    <h3>Criar novo pedido</h3>
+<h3>Criar novo pedido</h3>
 
-    <form method="POST" action="{{ route('pedidos.store') }}">
-        @csrf
+<form method="POST" action="{{ route('pedidos.store') }}">
+    @csrf
 
-        <div class="mb-3">
-            <label for="id_usuario">Usuário:</label>
-            <select name="id_usuario" class="form-control">
-                @foreach($usuarios as $usuario)
-                    <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
-                @endforeach
-            </select>
-        </div>
+    <div class="mb-3">
+        <label for="id_usuario">Usuário:</label>
+        <select name="id_usuario" class="form-control" required>
+            @foreach($usuarios as $usuario)
+                <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
+            @endforeach
+        </select>
+    </div>
 
-        <div class="mb-3">
-            <label for="id_vendedor">Vendedor:</label>
-            <select name="id_vendedor" class="form-control">
-                @foreach($vendedores as $vendedor)
-                    <option value="{{ $vendedor->id }}">{{ $vendedor->nome }}</option>
-                @endforeach
-            </select>
-        </div>
+    <div class="mb-3">
+        <label for="id_vendedor">Vendedor:</label>
+        <select name="id_vendedor" class="form-control" required>
+            @foreach($vendedores as $vendedor)
+                <option value="{{ $vendedor->id }}">{{ $vendedor->nome }}</option>
+            @endforeach
+        </select>
+    </div>
 
-        <hr>
-        <h4>Jogos</h4>
+    <hr>
+
+    <h4>Jogos</h4>
+    <div class="input-group mb-3">
+        <select id="select-jogo" class="form-control">
+            <option value="" disabled selected>Selecione um jogo</option>
             @foreach ($jogos as $jogo)
-                <div>
-                    <input type="checkbox" name="jogos[]" value="{{ $jogo->id }}">
-                    <label>{{ $jogo->titulo }}</label>
-                    <input type="number" name="quantidade_jogos[{{ $jogo->id }}]" min="1" placeholder="Quantidade" value="1">
-                </div>
+                <option value="{{ $jogo->id }}">{{ $jogo->titulo }}</option>
             @endforeach
+        </select>
+        <input type="number" id="quantidade-jogo" class="form-control" min="1" value="1" style="max-width:100px;" />
+        <button type="button" id="btn-adicionar-jogo" class="btn btn-primary">Adicionar Jogo</button>
+    </div>
 
-        <hr>
-        <h4>Filmes</h4>
+    <div id="lista-jogos-selecionados" class="mb-4">
+    </div>
+
+    <h4>Filmes</h4>
+    <div class="input-group mb-3">
+        <select id="select-filme" class="form-control">
+            <option value="" disabled selected>Selecione um filme</option>
             @foreach ($filmes as $filme)
-                <div>
-                    <input type="checkbox" name="filmes[]" value="{{ $filme->id }}">
-                    <label>{{ $filme->titulo }}</label>
-                    <input type="number" name="quantidade_filmes[{{ $filme->id }}]" min="1" placeholder="Quantidade" value="1">
-                </div>
+                <option value="{{ $filme->id }}">{{ $filme->titulo }}</option>
             @endforeach
+        </select>
+        <input type="number" id="quantidade-filme" class="form-control" min="1" value="1" style="max-width:100px;" />
+        <button type="button" id="btn-adicionar-filme" class="btn btn-primary">Adicionar Filme</button>
+    </div>
 
+    <div id="lista-filmes-selecionados" class="mb-4"></div>
 
-        <hr>
-        <h4>Livros</h4>
+    <h4>Livros</h4>
+    <div class="input-group mb-3">
+        <select id="select-livro" class="form-control">
+            <option value="" disabled selected>Selecione um livro</option>
             @foreach ($livros as $livro)
-                <div>
-                    <input type="checkbox" name="livros[]" value="{{ $livro->id }}">
-                    <label>{{ $livro->titulo }}</label>
-                    <input type="number" name="quantidade_livros[{{ $livro->id }}]" min="1" placeholder="Quantidade" value="1">
-                </div>
+                <option value="{{ $livro->id }}">{{ $livro->titulo }}</option>
             @endforeach
+        </select>
+        <input type="number" id="quantidade-livro" class="form-control" min="1" value="1" style="max-width:100px;" />
+        <button type="button" id="btn-adicionar-livro" class="btn btn-primary">Adicionar Livro</button>
+    </div>
+
+    <div id="lista-livros-selecionados" class="mb-4"></div>
+
+    <button type="submit" class="btn btn-success">Salvar Pedido</button>
+</form>
+
+@endsection
+
+@section('js')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function adicionarItem(tipo) {
+            const select = document.getElementById(`select-${tipo}`);
+            const quantidadeInput = document.getElementById(`quantidade-${tipo}`);
+            const lista = document.getElementById(`lista-${tipo}s-selecionados`);
+
+            const id = select.value;
+            const texto = select.options[select.selectedIndex].text;
+            const quantidade = parseInt(quantidadeInput.value);
+
+            if (!id) {
+                alert(`Selecione um ${tipo} primeiro.`);
+                return;
+            }
+            if (quantidade < 1) {
+                alert('Quantidade deve ser pelo menos 1.');
+                return;
+            }
+
+            
+            if (document.getElementById(`${tipo}-${id}`)) {
+                alert(`${texto} já foi adicionado.`);
+                return;
+            }
+
+            
+            const div = document.createElement('div');
+            div.classList.add('mb-2');
+            div.id = `${tipo}-${id}`;
+
+            
+            div.innerHTML = `
+                <strong>${texto}</strong> - Quantidade: ${quantidade}
+                <button type="button" class="btn btn-sm btn-danger ml-2 btn-remover" data-id="${id}" data-tipo="${tipo}">Remover</button>
+                <input type="hidden" name="${tipo}s[${id}]" value="${quantidade}" />
+            `;
+
+            lista.appendChild(div);
+
+            select.value = "";
+            quantidadeInput.value = 1;
+        }
+        document.body.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-remover')) {
+                const btn = e.target;
+                const id = btn.getAttribute('data-id');
+                const tipo = btn.getAttribute('data-tipo');
+                const div = document.getElementById(`${tipo}-${id}`);
+                if (div) div.remove();
+            }
+        });
 
 
-        <button type="submit" class="btn btn-primary mt-4">Salvar Pedido</button>
-    </form>
+        document.getElementById('btn-adicionar-jogo').addEventListener('click', function() {
+            adicionarItem('jogo');
+        });
+        document.getElementById('btn-adicionar-filme').addEventListener('click', function() {
+            adicionarItem('filme');
+        });
+        document.getElementById('btn-adicionar-livro').addEventListener('click', function() {
+            adicionarItem('livro');
+        });
+    });
+</script>
 @endsection

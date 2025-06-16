@@ -44,33 +44,29 @@ class PedidosController extends Controller
             'id_vendedor' => $request->id_vendedor,
         ]);
 
-        if ($request->has('jogos')) {
+        if ($request->jogos) {
             $jogos = [];
-            foreach ($request->jogos as $id_jogo) {
-                $quantidade = $request->input("quantidade_jogos.$id_jogo", 1);
+            foreach ($request->jogos as $id_jogo => $quantidade) {
                 $jogos[$id_jogo] = ['quantidade' => $quantidade];
             }
             $pedido->jogos()->sync($jogos);
         }
 
-        if ($request->has('filmes')) {
+        if ($request->filmes) {
             $filmes = [];
-            foreach ($request->filmes as $id_filme) {
-                $quantidade = $request->input("quantidade_filmes.$id_filme", 1);
+            foreach ($request->filmes as $id_filme => $quantidade) {
                 $filmes[$id_filme] = ['quantidade' => $quantidade];
             }
             $pedido->filmes()->sync($filmes);
         }
 
-        if ($request->has('livros')) {
+        if ($request->livros) {
             $livros = [];
-            foreach ($request->livros as $id_livro) {
-                $quantidade = $request->input("quantidade_livros.$id_livro", 1);
+            foreach ($request->livros as $id_livro => $quantidade) {
                 $livros[$id_livro] = ['quantidade' => $quantidade];
             }
             $pedido->livros()->sync($livros);
         }
-
 
         return redirect()->route('pedidos.index')->with('success', 'Pedido criado com sucesso!');
     }

@@ -37,11 +37,27 @@
 
                                 @for($i = 0; $i < $max; $i++)
                                     <tr>
-                                        <td>{{ $pedido->jogos[$i]->titulo ?? '-' }}</td>
-                                        <td>{{ $pedido->filmes[$i]->titulo ?? '-' }}</td>
-                                        <td>{{ $pedido->livros[$i]->titulo ?? '-' }}</td>
+                                        <td>
+                                            {{ $pedido->jogos[$i]->titulo ?? '-' }} 
+                                            @if(isset($pedido->jogos[$i]))
+                                                (Qtd: {{ $pedido->jogos[$i]->pivot->quantidade }})
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $pedido->filmes[$i]->titulo ?? '-' }}
+                                            @if(isset($pedido->filmes[$i]))
+                                                (Qtd: {{ $pedido->filmes[$i]->pivot->quantidade }})
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $pedido->livros[$i]->titulo ?? '-' }}
+                                            @if(isset($pedido->livros[$i]))
+                                                (Qtd: {{ $pedido->livros[$i]->pivot->quantidade }})
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endfor
+
                             </tbody>
                         </table>
                     </td>

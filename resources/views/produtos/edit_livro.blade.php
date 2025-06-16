@@ -20,22 +20,6 @@
             {!! Html::text('titulo', 'Título')->value($livro->titulo)->placeholder($livro->titulo)->required()->class('form-control') !!}
         </div>
         <div class="form-group">
-            {!! Html::label('Autor') !!}
-            {!! Html::text('autor', 'Autor')->value($livro->autor)->placeholder($livro->autor)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Editora') !!}
-            {!! Html::text('editora', 'Editora')->value($livro->editora)->placeholder($livro->editora)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Ano de Publicação') !!}
-            {!! Html::number('ano_publicacao', 'Ano de Publicação')->value($livro->ano_publicacao)->placeholder($livro->ano_publicacao)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Gênero') !!}
-            {!! Html::text('genero', 'Gênero')->value($livro->genero)->placeholder($livro->genero)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
             {!! Html::label('Preço') !!}
             {!! Html::number('preco', 'Preço')->value($livro->preco)->placeholder($livro->preco)->attribute('step', '0.01')->required()->class('form-control') !!}
         </div>

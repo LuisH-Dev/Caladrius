@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
-    <h3>Editando Jogo: {{ $jogo->nome }}</h3>
+    <h3>Editando Jogo: {{ $jogo->titulo }}</h3>
 
     @if($errors->any())
         <div class="alert alert-danger">
@@ -16,24 +16,8 @@
     {!! Html::form()->action(route('jogos.update', $jogo->id))->method('POST')->open() !!}
         @method('PUT')
         <div class="form-group">
-            {!! Html::label('Nome') !!}
-            {!! Html::text('nome', 'Nome')->value($jogo->nome)->placeholder($jogo->nome)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Desenvolvedor') !!}
-            {!! Html::text('desenvolvedor', 'Desenvolvedor')->value($jogo->desenvolvedor)->placeholder($jogo->desenvolvedor)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Publicadora') !!}
-            {!! Html::text('publicadora', 'Publicadora')->value($jogo->publicadora)->placeholder($jogo->publicadora)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Ano de Lançamento') !!}
-            {!! Html::number('ano_lancamento', 'Ano de Lançamento')->value($jogo->ano_lancamento)->placeholder($jogo->ano_lancamento)->required()->class('form-control') !!}
-        </div>
-        <div class="form-group">
-            {!! Html::label('Gênero') !!}
-            {!! Html::text('genero', 'Gênero')->value($jogo->genero)->placeholder($jogo->genero)->required()->class('form-control') !!}
+            {!! Html::label('titulo') !!}
+            {!! Html::text('titulo', 'titulo')->value($jogo->titulo)->placeholder($jogo->titulo)->required()->class('form-control') !!}
         </div>
         <div class="form-group">
             {!! Html::label('Preço') !!}
