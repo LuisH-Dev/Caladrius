@@ -13,7 +13,7 @@
         <tbody>
             @foreach($usuarios as $usuario)
             <tr>
-                <td>{{ $usuario->name }}</td>
+                <td>{{ $usuario->nome }}</td>
                 <td>{{ $usuario->email }}</td>
                 <td>{{ $usuario->created_at->format('d/m/Y H:i') }}</td>
             </tr>

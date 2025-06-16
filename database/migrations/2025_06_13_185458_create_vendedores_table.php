@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('vendedores', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nome');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('telefone')->nullable();
-            $table->decimal('salario', 10, 2)->nullable();
-            $table->date('data_contratacao')->nullable();
+            $table->string('senha');
             $table->rememberToken();
             $table->timestamps();
         });

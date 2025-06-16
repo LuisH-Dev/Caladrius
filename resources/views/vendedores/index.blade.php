@@ -13,7 +13,7 @@
         <tbody>
             @foreach($vendedores as $vendedor)
             <tr>
-                <td>{{ $vendedor->name }}</td>
+                <td>{{ $vendedor->nome }}</td>
                 <td>{{ $vendedor->email }}</td>
                 <td>{{ $vendedor->created_at ? $vendedor->created_at->format('d/m/Y H:i') : '' }}</td>
             </tr>

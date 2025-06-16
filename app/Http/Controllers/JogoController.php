@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jogo;
+use App\Models\Pedido;
 
 class JogoController extends Controller
 {
@@ -38,6 +39,15 @@ class JogoController extends Controller
         ]);
 
         Jogo::create($request->all());
+
+        // Pedido::create([
+        //     'id_usuario' => 1,
+        //     'id_vendedor' => 1,
+        //     'id_jogo' => 1,
+        //     'id_livro' => 1,
+        //     'id_filme' => null,
+        // ]);
+
         return redirect('/produtos')->with('success', 'Jogo adicionado com sucesso!');
     }
 

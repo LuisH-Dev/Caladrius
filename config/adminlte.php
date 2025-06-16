@@ -325,21 +325,11 @@ return [
             'url' => '/usuarios',
             'icon' => 'fas fa-fw fa-users',
         ],
-        [
-            'text' => 'Adicionar usuários',
-            'url' => '/usuarios/novo-usuario',
-            'icon' => 'fas fa-fw fa-user-plus',
-        ],
         ['header' => 'VENDEDORES'],
         [
             'text' => 'Listar Vendedores',
             'url' => '/vendedores',
             'icon' => 'fas fa-fw fa-user-tie',
-        ],
-        [
-            'text' => 'Adicionar vendedores',
-            'url' => '/vendedores/novo-vendedor',
-            'icon' => 'fas fa-fw fa-user-plus',
         ],
         ['header' => 'PRODUTOS'],
         [

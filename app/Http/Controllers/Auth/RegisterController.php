@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Usuario;
 use App\Models\Vendedor;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/produtos';
 
     /**
      * Create a new controller instance.
@@ -51,9 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nome' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios'],
+            'senha' => ['required', 'string', 'min:8', 'confirmed'],
             'user_type' => ['required', 'in:usuario,vendedor'],
         ]);
     }
@@ -66,10 +65,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if ($data['user_type'] === 'usuario') {
+            return Usuario::create([
+                'nome' => $data['nome'],
+                'email' => $data['email'],
+                'senha' => Hash::make($data['senha']),
+            ]);
+        } else {
+            return Vendedor::create([
+                'nome' => $data['nome'],
+                'email' => $data['email'],
+                'senha' => Hash::make($data['senha']),
+            ]);
+        }
     }
 }

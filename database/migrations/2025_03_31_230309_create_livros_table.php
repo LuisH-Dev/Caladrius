@@ -12,12 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('livros', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('titulo');
-            $table->string('autor');
-            $table->string('editora');
-            $table->year('ano_publicacao');
-            $table->string('genero')->nullable();
             $table->decimal('preco', 8, 2)->nullable();
             $table->timestamps();
         });

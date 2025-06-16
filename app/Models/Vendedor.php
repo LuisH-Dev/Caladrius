@@ -9,11 +9,8 @@ class Vendedor extends Authenticatable
     protected $table = 'vendedores';
 
     protected $fillable = [
-        'name',
+        'nome',
         'email',
-        'password',
-        'telefone',
-        'salario',
-        'data_contratacao',
+        'senha',
     ];
 }

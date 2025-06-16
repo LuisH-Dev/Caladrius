@@ -12,12 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jogos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('desenvolvedor');
-            $table->string('publicadora');
-            $table->year('ano_lancamento');
-            $table->string('genero')->nullable();
+            $table->id();
+            $table->string('titulo');
             $table->decimal('preco', 8, 2)->nullable();
             $table->timestamps();
         });
