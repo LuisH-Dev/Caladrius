@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Usuario;
 use App\Models\Vendedor;
+use App\Models\PedidoJogo;
+use App\Models\PedidoLivro;
+use App\Models\PedidoFilme;
 class Pedido extends Model
 {
     protected $table = 'pedidos';
@@ -30,19 +33,22 @@ class Pedido extends Model
     public function jogos()
     {
         return $this->belongsToMany(Jogo::class, 'pedido_jogo')
-                    ->withPivot('quantidade');
+                    ->withPivot('quantidade')
+                    ->using(PedidoJogo::class);
     }
-    
+
     public function filmes()
     {
         return $this->belongsToMany(Filme::class, 'pedido_filme')
-                    ->withPivot('quantidade');
+                    ->withPivot('quantidade')
+                    ->using(PedidoFilme::class);
     }
-    
+
     public function livros()
     {
         return $this->belongsToMany(Livro::class, 'pedido_livro')
-                    ->withPivot('quantidade');
+                    ->withPivot('quantidade')
+                    ->using(PedidoLivro::class);
     }
 
 }

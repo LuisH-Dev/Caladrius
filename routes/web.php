@@ -46,5 +46,9 @@ Route::get('/vendedores', [VendedorController::class, 'index'])->name('vendedore
 
 //Pedidos routes
 Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos.index');
+Route::get('/pedidos/novo-pedido', [PedidosController::class, 'create'])->name('pedidos.create');
+Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
+
+
 
 Auth::routes();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pedido_livro', function (Blueprint $table) {
             $table->unsignedBigInteger('pedido_id');
             $table->unsignedBigInteger('livro_id');
-            $table->integer('quantidade');
+            $table->integer('quantidade')->nullable()->default('0');
 
             $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
             $table->foreign('livro_id')->references('id')->on('livros')->onDelete('cascade');

@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\Usuario;
+use App\Models\Vendedor;
+use App\Models\Jogo;
+use App\Models\Filme;
+use App\Models\Livro;
 
 class PedidosController extends Controller
 {
@@ -18,13 +23,56 @@ class PedidosController extends Controller
         return view('pedidos.index', compact('pedidos'));
     }
 
+    public function create()
+    {
+        $usuarios = Usuario::all();
+        $vendedores = Vendedor::all();
+        $jogos = Jogo::all();
+        $filmes = Filme::all();
+        $livros = Livro::all();
+
+        return view('pedidos.create_pedido', compact('usuarios', 'vendedores', 'jogos', 'filmes', 'livros'));
+    }
+
         /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        \App\Models\Pedido::create($request->all());
-        return redirect()->route('pedidos.index')->with('success', 'Filme adicionado com sucesso!');
+        $pedido = Pedido::create([
+            'id_usuario' => $request->id_usuario,
+            'id_vendedor' => $request->id_vendedor,
+        ]);
+
+        if ($request->has('jogos')) {
+            $jogos = [];
+            foreach ($request->jogos as $id_jogo) {
+                $quantidade = $request->input("quantidade_jogos.$id_jogo", 1);
+                $jogos[$id_jogo] = ['quantidade' => $quantidade];
+            }
+            $pedido->jogos()->sync($jogos);
+        }
+
+        if ($request->has('filmes')) {
+            $filmes = [];
+            foreach ($request->filmes as $id_filme) {
+                $quantidade = $request->input("quantidade_filmes.$id_filme", 1);
+                $filmes[$id_filme] = ['quantidade' => $quantidade];
+            }
+            $pedido->filmes()->sync($filmes);
+        }
+
+        if ($request->has('livros')) {
+            $livros = [];
+            foreach ($request->livros as $id_livro) {
+                $quantidade = $request->input("quantidade_livros.$id_livro", 1);
+                $livros[$id_livro] = ['quantidade' => $quantidade];
+            }
+            $pedido->livros()->sync($livros);
+        }
+
+
+        return redirect()->route('pedidos.index')->with('success', 'Pedido criado com sucesso!');
     }
 
     public function destroy($id)

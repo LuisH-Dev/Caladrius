@@ -358,6 +358,11 @@ return [
             'url' => '/pedidos',
             'icon' => 'fas fa-fw fa-list',
         ],
+                [
+            'text' => 'Adicionar Pedidos',
+            'url' => '/pedidos/novo-pedido',
+            'icon' => 'fas fa-fw fa-plus',
+        ],
 
         // ...outros itens, como configurações, usuários, etc...
     ],
