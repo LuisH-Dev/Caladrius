@@ -13,6 +13,7 @@ class PedidosController extends Controller
     public function index()
     {
         $pedidos = Pedido::all();
+        $pedidos = Pedido::with(['usuario', 'vendedor', 'jogo', 'filme', 'livro'])->get();
 
         return view('pedidos.index', compact('pedidos'));
     }

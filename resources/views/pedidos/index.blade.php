@@ -8,20 +8,31 @@
                 <th>ID do pedido</th>
                 <th>ID usuário</th>
                 <th>ID vendedor</th>
-                <th>ID jogo</th>
-                <th>ID livro</th>
-                <th>ID filme</th>
+                <th>Itens</th>
             </tr>
         </thead>
         <tbody>
             @foreach($pedidos as $pedido)
             <tr>
                 <td>{{ $pedido->id }}</td>
-                <td>{{ $pedido->id_usuario }}</td>
-                <td>{{ $pedido->id_vendedor }}</td>
-                <td>{{ $pedido->id_jogo }}</td>
-                <td>{{ $pedido->id_livro }}</td>
-                <td>{{ $pedido->id_filme }}</td>
+                <td>{{ $pedido->usuario->nome ?? 'desconhecido' }}</td>
+                <td>{{ $pedido->vendedor->nome ?? 'desconhecido' }}</td>
+                <td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Jogo</th>
+                                <th>Filme</th>
+                                <th>Livro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>{{ $pedido->jogo->titulo }}</td>
+                            <td>{{ $pedido->filme->titulo }}</td>
+                            <td>{{ $pedido->livro->titulo }}</td>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
             @endforeach
         </tbody>
