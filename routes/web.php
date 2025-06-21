@@ -14,10 +14,7 @@ Route::get('/', function () {
     return view('auth.login');
 })->name('login');
 
-Route::get('/produtos', function () {
-    return view('produtos.index');
-})->middleware('auth');
-
+Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
@@ -52,6 +49,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pedidos/novo-pedido', [PedidosController::class, 'create'])->name('pedidos.create');
     Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
     
-    Auth::routes();
+
 
 });
